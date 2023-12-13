@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata: 
+  name: pv01
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+  - ReadWriteMany
+  nfs:
+    path: /nfs-esky
+    server: 192.168.87.10
+  persistentVolumeReclaimPolicy: Retain
