@@ -1,0 +1,24 @@
+kind: LDAPSyncConfig
+apiVersion: v1
+url: ldap://dns02.lab.fahmy 
+bindDN: 'administrator@lab.fahmy'
+bindPassword: "p@ssw0rd"
+insecure: false
+ca: ca.crt
+augmentedActiveDirectory:  
+    groupsQuery:
+        baseDN: "ou=groups,ou=OpenShift,dc=lab,dc=fahmy"
+        scope: sub
+        derefAliases: never
+        pageSize: 0
+    groupUIDAttribute: dn
+    groupNameAttributes: [ cn ]
+    groupMembershipAttributes: [ memberOf ]
+    usersQuery:
+        baseDN: "ou=OpenShift,dc=lab,dc=fahmy"
+        scope: sub
+        derefAliases: never
+        pageSize: 0
+        filter: (objectclass=person)
+    userNameAttributes: [ sAMAccountName ]
+
